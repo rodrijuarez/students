@@ -16,5 +16,6 @@ public final class StudentContract {
         public static final String COLUMN_NAME_STUDENT_ID = "studentId";
         public static final String COLUMN_NAME_NAME = "name";
         public static final String COLUMN_NAME_SURNAME = "surname";
+        public static final String COLUMN_NAME_PHOTO = "photo";
     }
 }

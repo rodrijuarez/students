@@ -9,6 +9,20 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:text="Rodrigo"/>
+    <TextView
+        android:id="@+id/studentSurname"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Juarez"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/studentPhotoTwo"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignEnd="@+id/button" />
 
 </LinearLayout>

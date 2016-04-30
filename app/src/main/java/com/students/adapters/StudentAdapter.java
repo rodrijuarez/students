@@ -2,16 +2,18 @@ package com.students.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.students.R;
 import com.students.models.Student;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -19,10 +21,10 @@ import java.util.ArrayList;
  */
 public class StudentAdapter extends ArrayAdapter<Student> {
     private Activity activity;
-    private ArrayList<Student> lStudent;
+    private List<Student> lStudent;
     private static LayoutInflater inflater = null;
 
-    public StudentAdapter (Activity activity, int textViewResourceId, ArrayList<Student> _lStudent) {
+    public StudentAdapter (Activity activity, int textViewResourceId, List<Student> _lStudent) {
         super(activity, textViewResourceId, _lStudent);
         try {
             this.activity = activity;
@@ -45,7 +47,8 @@ public class StudentAdapter extends ArrayAdapter<Student> {
 
     public static class ViewHolder {
         public TextView display_name;
-        public TextView display_number;
+        public TextView display_surname;
+        public ImageView display_photo;
 
     }
 
@@ -58,6 +61,8 @@ public class StudentAdapter extends ArrayAdapter<Student> {
                 holder = new ViewHolder();
 
                 holder.display_name = (TextView) vi.findViewById(R.id.studentName);
+                holder.display_surname = (TextView) vi.findViewById(R.id.studentSurname);
+                holder.display_photo = (ImageView) vi.findViewById(R.id.studentPhotoTwo);
 
 
                 vi.setTag(holder);
@@ -68,6 +73,8 @@ public class StudentAdapter extends ArrayAdapter<Student> {
 
 
             holder.display_name.setText(lStudent.get(position).getName());
+            holder.display_surname.setText(lStudent.get(position).getSurname());
+            holder.display_photo.setImageBitmap(BitmapFactory.decodeByteArray(lStudent.get(position).getPhoto(), 0, lStudent.get(position).getPhoto().length));
 
 
         } catch (Exception e) {

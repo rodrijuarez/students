@@ -13,13 +13,15 @@ public class StudentDatabaseHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Students.db";
     private static final String TEXT_TYPE = " TEXT";
+    private static final String BLOB_TYPE = " BLOB";
     private static final String COMMA_SEP = ",";
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + StudentContract.Student.TABLE_NAME + " (" +
                     StudentContract.Student._ID + " INTEGER PRIMARY KEY," +
                     StudentContract.Student.COLUMN_NAME_STUDENT_ID + TEXT_TYPE + COMMA_SEP +
                     StudentContract.Student.COLUMN_NAME_NAME + TEXT_TYPE + COMMA_SEP +
-                    StudentContract.Student.COLUMN_NAME_SURNAME + TEXT_TYPE +
+                    StudentContract.Student.COLUMN_NAME_SURNAME + TEXT_TYPE + COMMA_SEP +
+                    StudentContract.Student.COLUMN_NAME_PHOTO + BLOB_TYPE +
             " )";
 
     private static final String SQL_DELETE_ENTRIES =
