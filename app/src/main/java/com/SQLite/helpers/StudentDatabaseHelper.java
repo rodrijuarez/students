@@ -11,7 +11,7 @@ import com.students.contracts.StudentContract;
  */
 public class StudentDatabaseHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "Students.db";
+    public static final String DATABASE_NAME = "Students_test.db";
     private static final String TEXT_TYPE = " TEXT";
     private static final String BLOB_TYPE = " BLOB";
     private static final String COMMA_SEP = ",";

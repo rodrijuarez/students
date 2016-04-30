@@ -43,6 +43,7 @@ public class StudentListActivity extends AppCompatActivity {
                 StudentContract.Student._ID,
                 StudentContract.Student.COLUMN_NAME_NAME,
                 StudentContract.Student.COLUMN_NAME_SURNAME,
+                StudentContract.Student.COLUMN_NAME_PHOTO,
         };
 
 // How you want the results sorted in the resulting Cursor
@@ -63,7 +64,8 @@ public class StudentListActivity extends AppCompatActivity {
 
         List<Student> students=  new ArrayList<Student>();
 
-        while(!cursor.isLast()) {
+        while(!cursor.isAfterLast()) {
+            System.out.println("estoy entrando aca");
             long itemId = cursor.getLong(
                     cursor.getColumnIndexOrThrow(StudentContract.Student._ID)
             );
@@ -80,6 +82,9 @@ public class StudentListActivity extends AppCompatActivity {
             students.add(student);
             cursor.moveToNext();
         }
+
+        System.out.println("students");
+        System.out.println(students);
 
         ArrayAdapter<Student> adapter = new StudentAdapter(this,
                 R.layout.student_list, students);
