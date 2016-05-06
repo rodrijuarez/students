@@ -33,7 +33,47 @@ public class StudentListActivity extends AppCompatActivity {
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.students_list);
 
+        this.updateStudentsList();
 
+        // ListView Item Click Listener
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                // ListView Clicked item index
+                int itemPosition = position;
+
+                // ListView Clicked item value
+                Student itemValue = (Student) listView.getItemAtPosition(position);
+
+                // Show Alert
+                Toast.makeText(getApplicationContext(),
+                        "Position :" + itemPosition + "  ListItem : " + itemValue.getName(), Toast.LENGTH_LONG)
+                        .show();
+
+            }
+
+        });
+
+        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.fab);
+        FAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent k = new Intent(StudentListActivity.this, CreateStudentActivity.class);
+                startActivityForResult(k, 1);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        this.updateStudentsList();
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void updateStudentsList() {
         StudentDatabaseHelper studentDatabaseHelper = new StudentDatabaseHelper(getApplicationContext());
         SQLiteDatabase db = studentDatabaseHelper.getReadableDatabase();
 
@@ -92,36 +132,5 @@ public class StudentListActivity extends AppCompatActivity {
 
         // Assign adapter to ListView
         listView.setAdapter(adapter);
-
-        // ListView Item Click Listener
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-
-                // ListView Clicked item index
-                int itemPosition = position;
-
-                // ListView Clicked item value
-                Student itemValue = (Student) listView.getItemAtPosition(position);
-
-                // Show Alert
-                Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue.getName(), Toast.LENGTH_LONG)
-                        .show();
-
-            }
-
-        });
-
-        FloatingActionButton FAB = (FloatingActionButton) findViewById(R.id.fab);
-        FAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent k = new Intent(StudentListActivity.this, CreateStudentActivity.class);
-                startActivity(k);
-            }
-        });
     }
 }

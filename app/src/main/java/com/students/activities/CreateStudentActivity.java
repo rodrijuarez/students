@@ -45,7 +45,9 @@ public class CreateStudentActivity extends AppCompatActivity {
                 StudentContract.Student.TABLE_NAME,
                 "null",
                 values);
-        this.finish();
+
+        setResult(1); //add this
+        finish();
     }
 
     public static byte[] getBitmapAsByteArray(Bitmap bitmap) {
